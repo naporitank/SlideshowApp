@@ -11,20 +11,22 @@ import UIKit
 class ViewController: UIViewController {
     
     
-    @IBOutlet weak var myImageView: UIImageView!
+    
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var startstop: UIButton!
     @IBOutlet weak var next: UIButton!
     @IBOutlet weak var back: UIButton!
     
     var countnumber  = 0
-    var photoImage:UIImage!
+    var photosImage:UIImage!
     
-    let images = ["image-1","image-2","image-3"]
-    let myImage1 = UIImage(named : "image-1")
-    let myImage2 = UIImage(named : "image-2")
-    let myImage3 = UIImage(named : "image-3")
+    let images = ["photo-1","photo-2","photo-3"]
+    let myImage1 = UIImage(named : "photo-1")
+    let myImage2 = UIImage(named : "photo-2")
+    let myImage3 = UIImage(named : "photo-3")
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -32,32 +34,30 @@ class ViewController: UIViewController {
     
     func imageDisplay(){
         
-        photoImage = UIImage(named : images[countnumber])
-        myImageView.image = photoImage
+        photosImage = UIImage(named : images[countnumber])
+        imageView.image = photosImage
         
-        imageDisplay()
-    }
+    
+        }
+    
     
     @IBAction func nextbuttontapaction(sender: AnyObject) {
         if countnumber < images.count-1{
             countnumber++
         }else if countnumber == images.count-1{
             countnumber = 0
-            
-            imageDisplay()
+            }
+        imageDisplay()
         }
-        
-        
-        
-    }
+    
+    
     @IBAction func backbuttontapaction(sender: AnyObject) {
         if countnumber != 0{
             countnumber--
         }else if countnumber == 0{
             countnumber = images.count-1
-            
-            imageDisplay()
-        }
+            }
+        imageDisplay()
     }
     
 
