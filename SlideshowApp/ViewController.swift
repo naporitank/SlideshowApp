@@ -25,13 +25,14 @@ class ViewController: UIViewController {
     let myImage2 = UIImage(named : "photo-2")
     let myImage3 = UIImage(named : "photo-3")
     
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
     }
-    
+    //画像表示
     func imageDisplay(){
         
         photosImage = UIImage(named : images[countnumber])
@@ -65,7 +66,27 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func nextpage(){
+        if countnumber < images.count-1{
+            countnumber++
+        }else if countnumber == images.count-1{
+        }
+    }
+    
+    //タイマー
+    func onUpdate(timer:NSTimer){
+        NSTimer.scheduledTimerWithTimeInterval(2.0, target:self,selector:("nextpage"),userInfo:nil,repeats:true)
+        
+    }
+
+    @IBAction func startandstopbutton(sender: AnyObject) {
+
+        }
+        
+       
+        }
 
 
-}
 

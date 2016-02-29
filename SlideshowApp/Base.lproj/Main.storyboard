@@ -38,6 +38,9 @@
                                 <rect key="frame" x="235" y="519" width="130" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="再生/停止"/>
+                                <connections>
+                                    <action selector="startandstopbutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yRt-LQ-L3z"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1PL-Te-Pye">
                                 <rect key="frame" x="29" y="513" width="75" height="60"/>
