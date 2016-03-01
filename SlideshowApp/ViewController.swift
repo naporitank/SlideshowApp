@@ -20,10 +20,11 @@ class ViewController: UIViewController {
     var countnumber  = 0
     var photosImage:UIImage!
     
-    let images = ["photo-1","photo-2","photo-3"]
-    let myImage1 = UIImage(named : "photo-1")
-    let myImage2 = UIImage(named : "photo-2")
-    let myImage3 = UIImage(named : "photo-3")
+    let images = ["animal.jpeg","animal2.jpeg","animal3.jpg"]
+    let myImage1 = UIImage(named : "animal.jpeg")
+    let myImage2 = UIImage(named : "animal2.jpeg")
+    let myImage3 = UIImage(named : "animal3.jpg")
+    var timer: NSTimer?
     
     
     override func viewDidLoad() {
@@ -38,18 +39,13 @@ class ViewController: UIViewController {
         photosImage = UIImage(named : images[countnumber])
         imageView.image = photosImage
         
-    
-        }
+        
+    }
     
     
     @IBAction func nextbuttontapaction(sender: AnyObject) {
-        if countnumber < images.count-1{
-            countnumber++
-        }else if countnumber == images.count-1{
-            countnumber = 0
-            }
-        imageDisplay()
-        }
+        nextpage()
+    }
     
     
     @IBAction func backbuttontapaction(sender: AnyObject) {
@@ -57,11 +53,11 @@ class ViewController: UIViewController {
             countnumber--
         }else if countnumber == 0{
             countnumber = images.count-1
-            }
+        }
         imageDisplay()
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -69,24 +65,36 @@ class ViewController: UIViewController {
     
     
     func nextpage(){
+        //        if countnumber < images.count-1{
+        //            countnumber++
+        //        }else if countnumber == images.count-1{
+        //        }
         if countnumber < images.count-1{
             countnumber++
         }else if countnumber == images.count-1{
+            countnumber = 0
         }
+        imageDisplay()
     }
     
     //タイマー
-    func onUpdate(timer:NSTimer){
-        NSTimer.scheduledTimerWithTimeInterval(2.0, target:self,selector:("nextpage"),userInfo:nil,repeats:true)
+    func onUpdate(){
+        timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target:self,selector:("nextpage"),userInfo:nil,repeats:true)
         
     }
-
+    
     @IBAction func startandstopbutton(sender: AnyObject) {
-
+        if timer == nil {
+            // タイマーが動いていない
+            onUpdate()
+        } else {
+            // タイマーが動いていている
+            timer?.invalidate()
+            timer = nil
         }
-        
-       
-        }
-
+    }
+    
+    
+}
 
 
